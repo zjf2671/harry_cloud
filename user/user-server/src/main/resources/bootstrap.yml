@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: user
+  profiles:
+    active: dev
+  # jackson时间格式化
+  jackson:
+      time-zone: GMT+8
+      date-format: yyyy-MM-dd HH:mm:ss
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8800/eureka/

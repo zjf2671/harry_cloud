@@ -1,0 +1,45 @@
+package com.zjf.modules.user.service.impl;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zjf.common.constants.ErrorCodeEnum;
+import com.zjf.common.exception.BusinessException;
+import com.zjf.common.utils.BeanCommonUtils;
+import com.zjf.common.user.output.SysUserOutputDTO;
+import com.zjf.modules.user.dao.SysUserDao;
+import com.zjf.modules.user.entity.SysUserEntity;
+import com.zjf.modules.user.service.SysUserService;
+import org.apache.shiro.crypto.hash.Sha256Hash;
+import org.springframework.stereotype.Service;
+
+
+/**
+ * 系统用户
+ * 
+ * @author harry.zhang
+ * 
+ */
+@Service("sysUserService")
+public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> implements SysUserService {
+
+
+	@Override
+	public SysUserOutputDTO queryByUserName(String username,String password) {
+		SysUserEntity sysUserEntity = baseMapper.queryByUserName(username);
+		//账号不存在、密码错误
+		if(sysUserEntity == null || !sysUserEntity.getPassword().equals(new Sha256Hash(password, sysUserEntity.getSalt()).toHex())) {
+			throw new BusinessException(ErrorCodeEnum.USER_PASSWORD_ERROR.getValue(), ErrorCodeEnum.USER_PASSWORD_ERROR.getCode());
+		}
+
+		//账号锁定
+		if(sysUserEntity.getStatus() == 0){
+			throw new BusinessException(ErrorCodeEnum.USER_LOCK.getValue(), ErrorCodeEnum.USER_LOCK.getCode());
+		}
+		SysUserOutputDTO sysUserOutputDTO = new SysUserOutputDTO();
+		if(sysUserEntity!=null){
+			BeanCommonUtils.copyProperties(sysUserEntity,sysUserOutputDTO);
+		}
+		return sysUserOutputDTO;
+	}
+
+
+}

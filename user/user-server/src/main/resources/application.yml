@@ -1,0 +1,35 @@
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: io.renren.modules.*.entity
+  global-config:
+    #数据库相关配置
+    db-config:
+      db-type: sql_server
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: AUTO
+      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+      field-strategy: NOT_NULL
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+    banner: false
+  #原生配置
+  configuration:
+    #驼峰下划线转换
+    map-underscore-to-camel-case: false
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+app:
+    # 是通过jwt认证的，可以进行修改【加密秘钥】
+    jwt:
+        # 加密秘钥
+        secret: f4e2e52034348f86b67cde581c0f9eb5
+        # token有效时长，7天，单位秒
+        expire: 604800
+        header: token
+
+logging:
+  level:
+    root: debug
