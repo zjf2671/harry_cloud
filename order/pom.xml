@@ -21,7 +21,6 @@
 		<product-api.version>0.0.1-SNAPSHOT</product-api.version>
 		<lombok.version>1.16.20</lombok.version>
 		<guava.version>27.0.1-jre</guava.version>
-		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
 	</properties>
 
 	<modules>
