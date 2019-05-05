@@ -2,7 +2,7 @@
 SpringCloud 学习项目
 
 # cloud_server
-  --基本服务支撑
+  --基础服务支撑
 # order
   --具体订单中心业务服务
 # product
