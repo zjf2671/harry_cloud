@@ -6,14 +6,14 @@ import com.netflix.zuul.exception.ZuulException;
 import com.zjf.common.exception.BusinessException;
 import com.zjf.common.exception.GatewayException;
 import com.zjf.common.utils.JwtUtils;
-import com.zjf.common.utils.ResponseBodyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_DECORATION_FILTER_ORDER;
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_TYPE;
@@ -25,6 +25,11 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 @Component
 @Slf4j
 public class TokenFilter extends ZuulFilter {
+
+    /**
+     * 配置不走token的URL
+     */
+    private final List<String> passUrlList = Arrays.asList("/v2/api-docs");
 
     @Autowired
     private JwtUtils jwtUtils;
@@ -59,12 +64,14 @@ public class TokenFilter extends ZuulFilter {
             return false;
         }
 
-//        HttpServletRequest request = requestContext.getRequest();
-//        String requestURI = request.getRequestURI();
-//        log.info("requestURI====>{}", requestURI);
-//        if(requestURI.contains("/auth/login")){
-//            return false;
-//        }
+        HttpServletRequest request = requestContext.getRequest();
+        String requestURI = request.getRequestURI();
+        log.info("requestURI====>{}", requestURI);
+        for(String passUrl:passUrlList){
+            if(requestURI.contains(passUrl)){
+                return false;
+            }
+        }
 
         return true;
     }
@@ -79,14 +86,11 @@ public class TokenFilter extends ZuulFilter {
         if (StringUtils.isBlank(token)) {
             token = request.getParameter("token");
         }
-        if (StringUtils.isBlank(token)) {
-            ResponseBodyUtil.responseBody(requestContext, HttpStatus.UNAUTHORIZED.value(),"无  token");
-        }else{
-            try {
-                jwtUtils.getClaimByToken(token);
-            } catch (BusinessException e) {
-                throw new GatewayException(e.getMsg());
-            }
+
+        try {
+            jwtUtils.getClaimByToken(token);
+        } catch (BusinessException e) {
+            throw new GatewayException(e.getMsg(), e.getCode());
         }
 
         return null;

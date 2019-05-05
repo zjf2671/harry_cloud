@@ -17,7 +17,11 @@ public enum ErrorCodeEnum {
     /**
      * token 错误
      */
-    TOKEN_ERROR(100003,"token error");
+    TOKEN_ERROR(100003,"token error"),
+    /**
+     * token 无授权
+     */
+    TOKEN_UNAUTHORIZED(100004,"token Unauthorized");
 
     private int code;
     private String value;

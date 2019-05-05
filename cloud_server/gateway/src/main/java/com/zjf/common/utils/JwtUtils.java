@@ -1,12 +1,11 @@
 package com.zjf.common.utils;
 
-import com.zjf.common.exception.BusinessException;
 import com.zjf.common.constants.ErrorCodeEnum;
+import com.zjf.common.exception.BusinessException;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -14,7 +13,7 @@ import java.util.Date;
 /**
  * jwt工具类
  * @author harry.zhang
- * 
+ *
  */
 @ConfigurationProperties(prefix = "app.jwt")
 @Component
@@ -56,7 +55,7 @@ public class JwtUtils {
         }catch (MalformedJwtException e){
             throw new BusinessException(ErrorCodeEnum.TOKEN_ERROR.getValue(), ErrorCodeEnum.TOKEN_ERROR.getCode(), e);
         }catch (Exception e){
-            throw new BusinessException("validate is token error", HttpStatus.UNAUTHORIZED.value(), e);
+            throw new BusinessException(ErrorCodeEnum.TOKEN_UNAUTHORIZED.getValue(), ErrorCodeEnum.TOKEN_UNAUTHORIZED.getCode(), e);
         }
     }
 

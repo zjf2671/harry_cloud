@@ -4,10 +4,8 @@ import com.netflix.zuul.exception.ZuulException;
 import org.springframework.http.HttpStatus;
 
 /**
- * @Description: 自定义异常 
+ * @Description: 自定义异常
  * @author harry.zhang
- * @CreateDate:	2018年3月25日
- * @version 1.0
  */
 public class GatewayException extends ZuulException {
 
@@ -24,7 +22,7 @@ public class GatewayException extends ZuulException {
 		this.msg = msg;
 	}
 
-/*	public GatewayException(String msg, int code) {
+	public GatewayException(String msg, int code) {
 		super(msg, code, msg);
 		this.msg = msg;
 		this.code = code;
@@ -34,7 +32,7 @@ public class GatewayException extends ZuulException {
 		super(e, msg, code, msg);
 		this.msg = msg;
 		this.code = code;
-	}*/
+	}
 
 	public String getMsg() {
 		return msg;
@@ -51,6 +49,6 @@ public class GatewayException extends ZuulException {
 	public void setCode(int code) {
 		this.code = code;
 	}
-	
-	
+
+
 }

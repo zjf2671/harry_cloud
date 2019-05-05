@@ -2,6 +2,8 @@ package com.zjf.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import com.netflix.zuul.exception.ZuulException;
+import com.zjf.common.exception.GatewayException;
 import com.zjf.common.utils.ResponseBodyUtil;
 import com.zjf.common.utils.IPUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +45,7 @@ public class IpFilter extends ZuulFilter {
     }
  
     @Override
-    public Object run(){
+    public Object run() throws ZuulException {
         RequestContext ctx= RequestContext.getCurrentContext();
         HttpServletRequest req=ctx.getRequest();
         String ipAddr = IPUtils.getIpAddr(req);
@@ -54,7 +56,7 @@ public class IpFilter extends ZuulFilter {
 
         if(!ips.contains(ipAddr)){
             log.info("IP地址校验不通过！！！");
-            ResponseBodyUtil.responseBody(ctx, HttpStatus.UNAUTHORIZED.value(),"IpAddr is forbidden!");
+            throw new GatewayException("IpAddr is forbidden!", HttpStatus.UNAUTHORIZED.value());
         }else{
             log.info("IP校验通过。");
         }
