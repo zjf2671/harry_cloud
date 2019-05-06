@@ -27,7 +27,6 @@
 		<commons.io.version>2.5</commons.io.version>
 		<commons.configuration.version>1.10</commons.configuration.version>
 		<spring-boot-admin.version>2.1.4</spring-boot-admin.version>
-		<swagger-butler-core-version>2.0.0</swagger-butler-core-version>
 
 	</properties>
 
@@ -40,13 +39,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
 
 			<dependency>
 				<groupId>com.zjf</groupId>
@@ -82,21 +74,19 @@
 				<artifactId>commons-fileupload</artifactId>
 				<version>${commons.fileupload.version}</version>
 			</dependency>
+
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
 				<version>${commons.io.version}</version>
 			</dependency>
+
 			<dependency>
 				<groupId>commons-configuration</groupId>
 				<artifactId>commons-configuration</artifactId>
 				<version>${commons.configuration.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>com.didispace</groupId>
-				<artifactId>swagger-butler-core</artifactId>
-				<version>${swagger-butler-core-version}</version>
-			</dependency>
+
 			<dependency>
 				<groupId>de.codecentric</groupId>
 				<artifactId>spring-boot-admin-starter-server</artifactId>
