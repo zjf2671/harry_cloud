@@ -30,6 +30,9 @@ app:
         expire: 604800
         header: token
 
+swagger2:
+  enable: true
+
 logging:
   level:
     root: debug

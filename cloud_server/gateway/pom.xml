@@ -107,7 +107,10 @@
 			<artifactId>joda-time</artifactId>
 		</dependency>
 
-
+		<dependency>
+			<groupId>com.didispace</groupId>
+			<artifactId>swagger-butler-core</artifactId>
+		</dependency>
 
 	</dependencies>
 

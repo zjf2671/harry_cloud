@@ -31,6 +31,11 @@ ribbon:
   ReadTimeout: 10000
   ConnectTimeout: 10000
 
+#开启swagger自动路由配置
+swagger:
+  butler:
+    auto-generate-from-zuul-routes: true
+
 #logging:
 #  level:
 #    root: INFO

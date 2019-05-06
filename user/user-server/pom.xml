@@ -109,6 +109,11 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>com.didispace</groupId>
+			<artifactId>swagger-butler-core</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
