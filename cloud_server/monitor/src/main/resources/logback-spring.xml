@@ -4,7 +4,7 @@
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
 
     <!--用于定义model方便日志查找-->
-    <property name="model" value="zy-cloud-server" />
+    <property name="model" value="cloud_server" />
     <!--用于定义业务模块方便日志查找-->
     <property name="business" value="monitor" />
 
