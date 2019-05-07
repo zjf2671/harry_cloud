@@ -12,7 +12,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableZuulProxy
-@EnableFeignClients("com.zy.client")
+@EnableFeignClients("com.zjf.client")
 public class GatewayApplication {
 
 	public static void main(String[] args) {
