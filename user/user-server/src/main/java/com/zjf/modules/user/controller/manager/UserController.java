@@ -3,14 +3,22 @@ package com.zjf.modules.user.controller.manager;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zjf.common.user.ResultVO;
 import com.zjf.common.user.output.SysUserOutputDTO;
+import com.zjf.common.utils.PageUtils;
 import com.zjf.common.utils.RedisUtils;
 import com.zjf.modules.user.entity.SysUserEntity;
 import com.zjf.modules.user.service.SysUserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import springfox.documentation.annotations.ApiIgnore;
+
+import java.util.Map;
 
 /**
  * 网关路由过来的请求
@@ -18,6 +26,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  * @Author Harry
  * @Date 2019/4/25 14:13
  **/
+@Api(tags = "用户系统中心-用户管理")
 @RestController
 public class UserController {
 
@@ -26,6 +35,22 @@ public class UserController {
 
     @Autowired
     private RedisUtils redisUtils;
+
+    /**
+     * 分页查询
+     * @param params
+     * @return
+     */
+    @ApiOperation("用户列表")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "currPage", dataType = "int", value = "当前页"),
+            @ApiImplicitParam(name = "pageSize", dataType = "int", value = "每页显示数量"),
+    })
+    @GetMapping("/queryPageList")
+    public ResultVO<PageUtils> getPageList(@ApiIgnore @RequestParam Map<String, Object> params){
+        PageUtils pageUtils = sysUserService.queryPage(params);
+        return ResultVO.ok(pageUtils);
+    }
 
     /**
      * 查询用户

@@ -24,6 +24,7 @@ zuul:
 #      order: /myOrder/**
 
 # 开启http://localhost:8802/actuator/routes
+# spring boot admin 监控的端点
 management:
   endpoints:
     web:

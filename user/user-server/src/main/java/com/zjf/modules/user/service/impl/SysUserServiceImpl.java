@@ -1,15 +1,22 @@
 package com.zjf.modules.user.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zjf.common.constants.ErrorCodeEnum;
 import com.zjf.common.exception.BusinessException;
 import com.zjf.common.utils.BeanCommonUtils;
 import com.zjf.common.user.output.SysUserOutputDTO;
+import com.zjf.common.utils.PageUtils;
+import com.zjf.common.utils.Query;
 import com.zjf.modules.user.dao.SysUserDao;
 import com.zjf.modules.user.entity.SysUserEntity;
 import com.zjf.modules.user.service.SysUserService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 
 /**
@@ -21,7 +28,14 @@ import org.springframework.stereotype.Service;
 @Service("sysUserService")
 public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> implements SysUserService {
 
+	@Override
+	public PageUtils queryPage(Map<String, Object> params) {
+		String username = (String)params.get("username");
+		IPage<SysUserEntity> pageList = this.page(new Query<SysUserEntity>().getPage(params), new QueryWrapper<SysUserEntity>().
+				eq(StringUtils.isNotBlank(username), "username", username));
 
+		return new PageUtils(pageList);
+	}
 	@Override
 	public SysUserOutputDTO queryByUserName(String username,String password) {
 		SysUserEntity sysUserEntity = baseMapper.queryByUserName(username);
