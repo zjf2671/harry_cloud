@@ -1,4 +1,4 @@
-package com.zy.product.output;
+package com.zjf.product.output;
 
 import lombok.Data;
 

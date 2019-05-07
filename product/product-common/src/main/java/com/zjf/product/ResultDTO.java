@@ -1,4 +1,4 @@
-package com.zy.product;
+package com.zjf.product;
 
 import java.io.Serializable;
 

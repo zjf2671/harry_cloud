@@ -1,8 +1,8 @@
 package com.zjf.product.service.impl;
 
 import com.google.common.collect.Lists;
+import com.zjf.product.output.ProductOuputDTO;
 import com.zjf.product.service.ProductService;
-import com.zy.product.output.ProductOuputDTO;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

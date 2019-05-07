@@ -1,8 +1,8 @@
 package com.zjf.product.controller;
 
+import com.zjf.product.ResultDTO;
+import com.zjf.product.output.ProductOuputDTO;
 import com.zjf.product.service.ProductService;
-import com.zy.product.ResultDTO;
-import com.zy.product.output.ProductOuputDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

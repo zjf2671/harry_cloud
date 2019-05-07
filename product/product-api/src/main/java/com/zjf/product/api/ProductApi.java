@@ -1,7 +1,7 @@
 package com.zjf.product.api;
 
-import com.zy.product.ResultDTO;
-import com.zy.product.output.ProductOuputDTO;
+import com.zjf.product.ResultDTO;
+import com.zjf.product.output.ProductOuputDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 

@@ -2,9 +2,8 @@ package com.zjf.order.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.zy.product.ResultDTO;
-import com.zy.product.output.ProductOuputDTO;
+import com.zjf.product.ResultDTO;
+import com.zjf.product.output.ProductOuputDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

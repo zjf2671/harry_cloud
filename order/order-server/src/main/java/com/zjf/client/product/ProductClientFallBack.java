@@ -1,7 +1,7 @@
 package com.zjf.client.product;
 
-import com.zy.product.ResultDTO;
-import com.zy.product.output.ProductOuputDTO;
+import com.zjf.product.ResultDTO;
+import com.zjf.product.output.ProductOuputDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
