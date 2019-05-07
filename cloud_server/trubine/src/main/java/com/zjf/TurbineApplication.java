@@ -2,19 +2,21 @@ package com.zjf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.turbine.EnableTurbine;
 
 /**
  * @author Harry
  */
 @SpringBootApplication
+@EnableHystrixDashboard
 @EnableDiscoveryClient
-@EnableCircuitBreaker
-public class ProductServerApplication {
+@EnableTurbine
+public class TurbineApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProductServerApplication.class, args);
+		SpringApplication.run(TurbineApplication.class, args);
 	}
 
 }

@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @EnableHystrixDashboard //开启Hystrix dashboard
  */
 
-@EnableFeignClients(basePackages = "com.zy.client")
+@EnableFeignClients(basePackages = "com.zjf.client")
 @EnableHystrixDashboard
 //@SpringBootApplication
 //@EnableDiscoveryClient

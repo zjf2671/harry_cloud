@@ -1,0 +1,8 @@
+# turbine 配置
+turbine:
+  appConfig: order,product #,gateway,user
+  aggregator:
+    # turbine聚集数据的粒度
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  combineHostPort: true

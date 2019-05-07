@@ -13,8 +13,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8800/eureka/
+
+#配置正常打开hystrix dashboard页面
 management:
   endpoints:
     web:
       exposure:
-        include: "*" # 或者"*" hystrix.stream
+        include: hystrix.stream # 或者"*"
