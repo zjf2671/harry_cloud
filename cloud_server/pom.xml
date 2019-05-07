@@ -35,6 +35,7 @@
 		<module>config</module>
 		<module>gateway</module>
 		<module>monitor</module>
+		<module>zipkin</module>
 	</modules>
 
 	<dependencyManagement>

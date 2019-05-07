@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: zipkin
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8800/eureka/
+#  解决zipkinserver报错 https://blog.csdn.net/duanqing_song/article/details/80422301
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+# spring boot admin 监控的端点
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+
+
