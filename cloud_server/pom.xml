@@ -36,6 +36,7 @@
 		<module>gateway</module>
 		<module>monitor</module>
 		<module>zipkin</module>
+		<module>trubine</module>
 	</modules>
 
 	<dependencyManagement>
