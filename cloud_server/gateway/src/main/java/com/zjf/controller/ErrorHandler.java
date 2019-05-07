@@ -2,8 +2,11 @@ package com.zjf.controller;
 
 import com.zjf.common.user.ResultVO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
+import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +18,19 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @Slf4j
-public class ErrorHandler {
+@RequestMapping("/error")
+public class ErrorHandler extends AbstractErrorController{
 
-    @GetMapping(value = "/error")
+    @Autowired
+    public ErrorHandler(ErrorAttributes errorAttributes) {
+        super(errorAttributes);
+    }
+    /**
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping()
     public ResultVO error(HttpServletRequest request, HttpServletResponse response) {
         ResultVO r = new ResultVO();
         String message = request.getAttribute("javax.servlet.error.message").toString();
@@ -31,4 +44,8 @@ public class ErrorHandler {
         return r;
     }
 
+    @Override
+    public String getErrorPath() {
+        return "/error";
+    }
 }
