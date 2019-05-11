@@ -29,7 +29,7 @@ public class ResultDTO<T> implements Serializable{
 	}
 	
 	public static ResultDTO error() {
-		return error(500, "未知异常，请联系管理员");
+		return error(500, "用户系统出现异常，请联系管理员");
 	}
 	
 	public static ResultDTO error(String msg) {
