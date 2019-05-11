@@ -1,10 +1,11 @@
-package com.zjf.modules.user.entity;
+package com.zjf.modules.user.vo;
 
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,69 +17,65 @@ import java.util.Date;
  * @author harry.zhang
  * 
  */
-@TableName("sys_user")
 @Data
-public class SysUserEntity implements Serializable {
+@ApiModel(value="SysUserVO对象", description="系统用户对象")
+public class SysUserVO implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	
 	/**
 	 * 用户ID
 	 */
+	@ApiModelProperty("主键id")
 	private Long id;
 
 	/**
-	 * 操作员姓名
+	 * 用户名
 	 */
+	@ApiModelProperty("用户名")
 	private String username;
-
-	/**
-	 * 密码
-	 */
-	private String password;
-
-	/**
-	 * 盐
-	 */
-	private String salt;
 
 	/**
 	 * 邮箱
 	 */
+	@ApiModelProperty("邮箱")
 	private String email;
 
 	/**
 	 * 手机号
 	 */
+	@ApiModelProperty("手机号")
 	private String mobile;
 
 	/**
 	 * 状态  0：禁用   1：正常
 	 */
+	@ApiModelProperty("状态  0：禁用   1：正常")
 	private Integer status;
 	
 
 	/**
 	 * 创建者ID
 	 */
-	@TableField(fill = FieldFill.INSERT)
+	@ApiModelProperty("创建者ID")
 	private Long createId;
 
 	/**
 	 * 创建时间
 	 */
-	@TableField(fill = FieldFill.INSERT)
+	@ApiModelProperty("创建时间")
 	private Date createTime;
 
 	/**
 	 * 更新者ID
 	 */
-	@TableField(fill = FieldFill.UPDATE)
+	@ApiModelProperty("更新者ID")
 	private Long updateId;
 
 	/**
 	 * 更新者时间
 	 */
-	@TableField(fill = FieldFill.UPDATE)
+	@ApiModelProperty("更新者时间")
 	private Date updateTime;
 
 }

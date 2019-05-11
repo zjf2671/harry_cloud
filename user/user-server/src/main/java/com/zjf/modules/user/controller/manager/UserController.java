@@ -1,16 +1,15 @@
 package com.zjf.modules.user.controller.manager;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.zjf.common.user.ResultVO;
 import com.zjf.common.user.output.SysUserOutputDTO;
+import com.zjf.common.utils.BeanCommonUtils;
 import com.zjf.common.utils.PageUtils;
 import com.zjf.common.utils.RedisUtils;
+import com.zjf.common.utils.ResultVO;
 import com.zjf.modules.user.entity.SysUserEntity;
 import com.zjf.modules.user.service.SysUserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import com.zjf.modules.user.vo.SysUserVO;
+import io.swagger.annotations.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -46,9 +45,13 @@ public class UserController {
             @ApiImplicitParam(name = "currPage", dataType = "int", value = "当前页"),
             @ApiImplicitParam(name = "pageSize", dataType = "int", value = "每页显示数量"),
     })
+    @ApiResponses(value={
+            @ApiResponse(code=200, message="OK"),
+            @ApiResponse(code=500, message="后台异常")
+    })
     @GetMapping("/queryPageList")
-    public ResultVO<PageUtils> getPageList(@ApiIgnore @RequestParam Map<String, Object> params){
-        PageUtils pageUtils = sysUserService.queryPage(params);
+    public ResultVO<PageUtils<SysUserVO>> getPageList(@ApiIgnore @RequestParam Map<String, Object> params){
+        PageUtils<SysUserVO> pageUtils = sysUserService.queryPage(params);
         return ResultVO.ok(pageUtils);
     }
 
@@ -58,14 +61,15 @@ public class UserController {
      * @return
      */
     @GetMapping("/userInfo")
-    public ResultVO<SysUserOutputDTO> getUserInfo() {
+    public ResultVO<SysUserVO> getUserInfo() {
         String token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("token");
         if (StringUtils.isBlank(token)) {
             token = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getParameter("token");
         }
         SysUserOutputDTO sysUserOutputDTO = redisUtils.get(token, SysUserOutputDTO.class);
-
-        return ResultVO.ok(sysUserOutputDTO);
+        SysUserVO sysUserVO = new SysUserVO();
+        BeanCommonUtils.copyProperties(sysUserOutputDTO,sysUserVO);
+        return ResultVO.ok(sysUserVO);
     }
 
     /**
@@ -76,7 +80,7 @@ public class UserController {
     @PostMapping("/userInfo")
     public ResultVO<String> saveUser() {
         SysUserEntity entity = new SysUserEntity();
-        entity.setUserNo("009");
+        entity.setUsername("009");
         boolean save = sysUserService.save(entity);
         return ResultVO.ok();
     }
@@ -89,9 +93,8 @@ public class UserController {
     @PutMapping("/userInfo")
     public ResultVO<String> updateUser() {
         SysUserEntity entity = new SysUserEntity();
-        entity.setUserNo("009");
-        entity.setUsername("aaaa");
-        sysUserService.update(entity, new UpdateWrapper<SysUserEntity>().eq("userNo", entity.getUserNo()));
+        entity.setUsername("009");
+        sysUserService.update(entity, new UpdateWrapper<SysUserEntity>().eq("username", entity.getUsername()));
         return ResultVO.ok();
     }
 
@@ -103,8 +106,8 @@ public class UserController {
     @DeleteMapping("/userInfo")
     public ResultVO<String> deleteUser() {
         SysUserEntity entity = new SysUserEntity();
-        entity.setUserNo("009");
-        sysUserService.remove(new UpdateWrapper<SysUserEntity>().eq("userNo", entity.getUserNo()));
+        entity.setUsername("009");
+        sysUserService.remove(new UpdateWrapper<SysUserEntity>().eq("username", entity.getUsername()));
         return ResultVO.ok();
     }
 

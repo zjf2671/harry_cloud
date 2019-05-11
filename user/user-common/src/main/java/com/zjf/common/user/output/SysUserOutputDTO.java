@@ -20,11 +20,7 @@ public class SysUserOutputDTO implements Serializable{
     private Long id;
 
     /**
-     * 操作员工号
-     */
-    private String userNo;
-    /**
-     * 操作员姓名
+     * 用户名
      */
     private String username;
 

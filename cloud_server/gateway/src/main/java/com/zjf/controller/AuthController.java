@@ -5,7 +5,7 @@ import com.zjf.common.constants.ErrorCodeEnum;
 import com.zjf.common.exception.BusinessException;
 import com.zjf.common.utils.JwtUtils;
 import com.zjf.common.utils.RedisUtils;
-import com.zjf.common.user.ResultVO;
+import com.zjf.common.user.ResultDTO;
 import com.zjf.common.user.output.SysUserOutputDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -38,10 +38,10 @@ public class AuthController {
     private UserClient userClient;
 
     @PostMapping("/login")
-    public ResultVO login(String username, String password){
-        ResultVO<SysUserOutputDTO> resultVO = userClient.login(username, password);
-        ResultVO resultVOr = new ResultVO();
-        if(resultVO.getCode().equals(ResultVO.OK_CODE)){
+    public ResultDTO login(String username, String password){
+        ResultDTO<SysUserOutputDTO> resultVO = userClient.login(username, password);
+        ResultDTO resultVOr = new ResultDTO();
+        if(resultVO.getCode().equals(ResultDTO.OK_CODE)){
             SysUserOutputDTO sysUserOutputDTO = resultVO.getData();
             //生成token
             String token = jwtUtils.generateToken(sysUserOutputDTO.getId().toString());
@@ -63,12 +63,12 @@ public class AuthController {
      * 登出
      */
     @PostMapping(value = "/logout")
-    public ResultVO logout(@RequestHeader String token) {
+    public ResultDTO logout(@RequestHeader String token) {
         if(StringUtils.isBlank(token)){
             throw new BusinessException(ErrorCodeEnum.NO_TOKEN.getValue(),ErrorCodeEnum.NO_TOKEN.getCode());
         }
-        ResultVO<String> logout = userClient.logout(token);
-        if(logout.getCode().equals(ResultVO.OK_CODE)){
+        ResultDTO<String> logout = userClient.logout(token);
+        if(logout.getCode().equals(ResultDTO.OK_CODE)){
             redisUtils.delete(token);
         }
         return logout;

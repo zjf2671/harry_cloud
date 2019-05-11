@@ -1,7 +1,7 @@
 package com.zjf.modules.user.controller.server;
 
 
-import com.zjf.common.user.ResultVO;
+import com.zjf.common.user.ResultDTO;
 import com.zjf.common.user.output.SysUserOutputDTO;
 import com.zjf.common.utils.BeanCommonUtils;
 import com.zjf.common.utils.RedisUtils;
@@ -30,25 +30,25 @@ public class SysLoginController {
 	 * 登录
 	 */
 	@PostMapping("/login")
-	public ResultVO<SysUserOutputDTO> login(String username, String password) {
-		ResultVO<SysUserOutputDTO> r = new ResultVO();
+	public ResultDTO<SysUserOutputDTO> login(String username, String password) {
+		ResultDTO<SysUserOutputDTO> r = new ResultDTO();
 		//用户信息
 		SysUserOutputDTO user = sysUserService.queryByUserName(username, password);
 
-		return ResultVO.ok(user);
+		return ResultDTO.ok(user);
 	}
 
 	@GetMapping("/getUserInfoById")
-	public ResultVO<SysUserOutputDTO> getUserInfo(Long id) {
+	public ResultDTO<SysUserOutputDTO> getUserInfo(Long id) {
 		SysUserEntity userEntity = sysUserService.getById(id);
 		SysUserOutputDTO sysUserOutputDTO = new SysUserOutputDTO();
 		BeanCommonUtils.copyProperties(userEntity,sysUserOutputDTO);
-		return ResultVO.ok(sysUserOutputDTO);
+		return ResultDTO.ok(sysUserOutputDTO);
 	}
 
 	@PostMapping("/logout")
-	public ResultVO<String> logout(String token){
-		ResultVO<String> resultVO = new ResultVO<>();
+	public ResultDTO<String> logout(String token){
+		ResultDTO<String> resultVO = new ResultDTO<>();
 		SysUserOutputDTO sysUserOutputDTO = redisUtils.get(token, SysUserOutputDTO.class);
 		//todo
 		return resultVO;

@@ -2,7 +2,7 @@ package com.zjf.common.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.netflix.zuul.context.RequestContext;
-import com.zjf.common.user.ResultVO;
+import com.zjf.common.user.ResultDTO;
 import org.springframework.http.HttpStatus;
 
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +19,7 @@ public class ResponseBodyUtil {
         //终止转发，返回响应报文
         requestContext.setSendZuulResponse(false);
         requestContext.setResponseStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        requestContext.setResponseBody(JSON.toJSONString(ResultVO.error(code, msg)));
+        requestContext.setResponseBody(JSON.toJSONString(ResultDTO.error(code, msg)));
     }
 
 }

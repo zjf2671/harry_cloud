@@ -1,6 +1,6 @@
 package com.zjf.controller;
 
-import com.zjf.common.user.ResultVO;
+import com.zjf.common.user.ResultDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
@@ -31,8 +31,8 @@ public class ErrorHandler extends AbstractErrorController{
      * @return
      */
     @RequestMapping()
-    public ResultVO error(HttpServletRequest request, HttpServletResponse response) {
-        ResultVO r = new ResultVO();
+    public ResultDTO error(HttpServletRequest request, HttpServletResponse response) {
+        ResultDTO r = new ResultDTO();
         String message = request.getAttribute("javax.servlet.error.message").toString();
         String code = request.getAttribute("javax.servlet.error.status_code").toString();
         Exception exception = (Exception)request.getAttribute("javax.servlet.error.exception");

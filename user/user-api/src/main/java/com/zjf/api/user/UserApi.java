@@ -1,6 +1,6 @@
 package com.zjf.api.user;
 
-import com.zjf.common.user.ResultVO;
+import com.zjf.common.user.ResultDTO;
 import com.zjf.common.user.output.SysUserOutputDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +20,7 @@ public interface UserApi {
      * @return
      */
     @PostMapping("/login")
-    public ResultVO<SysUserOutputDTO> login(@RequestParam("username") String username, @RequestParam("password") String password);
+    public ResultDTO<SysUserOutputDTO> login(@RequestParam("username") String username, @RequestParam("password") String password);
 
     /**
      * 通过用户id去取用户的信息
@@ -28,7 +28,7 @@ public interface UserApi {
      * @return
      */
     @GetMapping("/getUserInfoById")
-    public ResultVO<SysUserOutputDTO> getUserInfo(@RequestParam("id") Long id);
+    public ResultDTO<SysUserOutputDTO> getUserInfo(@RequestParam("id") Long id);
 
     /**
      * 用户登出
@@ -36,6 +36,6 @@ public interface UserApi {
      * @return
      */
     @PostMapping("/logout")
-    public ResultVO<String> logout(@RequestParam("token")String token);
+    public ResultDTO<String> logout(@RequestParam("token")String token);
 
 }

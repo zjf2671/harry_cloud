@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.zjf.common.constants;
 
 /**
@@ -40,6 +32,10 @@ public class Constant {
 	 * 菜单类型
 	 */
     public enum MenuType {
+        /**
+         * 目录
+         */
+        CATALOG(0),
         /**
          * 菜单
          */

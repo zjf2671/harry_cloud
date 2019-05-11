@@ -11,7 +11,7 @@ import java.io.Serializable;
  * 
  */
 @Data
-public class ResultVO<T> implements Serializable{
+public class ResultDTO<T> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,34 +23,34 @@ public class ResultVO<T> implements Serializable{
 
 	private T data;
 
-	public ResultVO() {
+	public ResultDTO() {
 		this.code = OK_CODE;
 		this.msg = "success";
 	}
 	
-	public static ResultVO error() {
+	public static ResultDTO error() {
 		return error(500, "未知异常，请联系管理员");
 	}
 	
-	public static ResultVO error(String msg) {
+	public static ResultDTO error(String msg) {
 		return error(500, msg);
 	}
 	
-	public static ResultVO error(int code, String msg) {
-		ResultVO r = new ResultVO();
+	public static ResultDTO error(int code, String msg) {
+		ResultDTO r = new ResultDTO();
 		r.setCode(code);
 		r.setMsg(msg);
 		return r;
 	}
 
-	public static <T> ResultVO ok(T t) {
-		ResultVO r = new ResultVO();
+	public static <T> ResultDTO ok(T t) {
+		ResultDTO r = new ResultDTO();
 		r.setData(t);
 		return r;
 	}
 	
-	public static ResultVO ok() {
-		return new ResultVO();
+	public static ResultDTO ok() {
+		return new ResultDTO();
 	}
 
 }
