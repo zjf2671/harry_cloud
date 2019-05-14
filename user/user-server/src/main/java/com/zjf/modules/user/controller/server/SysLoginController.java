@@ -30,7 +30,7 @@ public class SysLoginController {
 	 * 登录
 	 */
 	@PostMapping("/login")
-	public ResultDTO<SysUserOutputDTO> login(String username, String password) {
+	public ResultDTO login(String username, String password) {
 		ResultDTO<SysUserOutputDTO> r = new ResultDTO();
 		//用户信息
 		SysUserOutputDTO user = sysUserService.queryByUserName(username, password);

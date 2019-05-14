@@ -1,5 +1,6 @@
 package com.zjf;
 
+import com.didispace.swagger.butler.EnableSwaggerButler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -13,6 +14,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @EnableZuulProxy
 @EnableFeignClients("com.zjf.client")
+@EnableSwaggerButler
 public class GatewayApplication {
 
 	public static void main(String[] args) {

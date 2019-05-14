@@ -20,7 +20,7 @@ public interface UserApi {
      * @return
      */
     @PostMapping("/login")
-    public ResultDTO<SysUserOutputDTO> login(@RequestParam("username") String username, @RequestParam("password") String password);
+    public ResultDTO login(@RequestParam("username") String username, @RequestParam("password") String password);
 
     /**
      * 通过用户id去取用户的信息

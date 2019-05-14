@@ -1,12 +1,13 @@
-package com.zjf.controller;
+package com.zjf.controller.manage;
 
+import com.alibaba.fastjson.JSON;
 import com.zjf.client.user.UserClient;
 import com.zjf.common.constants.ErrorCodeEnum;
 import com.zjf.common.exception.BusinessException;
-import com.zjf.common.utils.JwtUtils;
-import com.zjf.common.utils.RedisUtils;
 import com.zjf.common.user.ResultDTO;
 import com.zjf.common.user.output.SysUserOutputDTO;
+import com.zjf.common.utils.JwtUtils;
+import com.zjf.common.utils.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +40,11 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResultDTO login(String username, String password){
-        ResultDTO<SysUserOutputDTO> resultVO = userClient.login(username, password);
+        ResultDTO resultVO = userClient.login(username, password);
         ResultDTO resultVOr = new ResultDTO();
         if(resultVO.getCode().equals(ResultDTO.OK_CODE)){
-            SysUserOutputDTO sysUserOutputDTO = resultVO.getData();
+            Object data = resultVO.getData();
+            SysUserOutputDTO sysUserOutputDTO = JSON.parseObject(JSON.toJSONString(data),SysUserOutputDTO.class);
             //生成token
             String token = jwtUtils.generateToken(sysUserOutputDTO.getId().toString());
             //存入redis中
