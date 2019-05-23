@@ -1,9 +1,8 @@
 package com.zjf.common.exception;
 
 /**
- * @Description: 自定义异常 
+ * @Description: 自定义业务异常
  * @author harry.zhang
- * @CreateDate:	2018年3月25日
  * @version 1.0
  */
 public class BusinessException extends RuntimeException {

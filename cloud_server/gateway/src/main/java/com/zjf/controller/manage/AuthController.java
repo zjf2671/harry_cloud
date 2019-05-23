@@ -8,6 +8,7 @@ import com.zjf.common.user.ResultDTO;
 import com.zjf.common.user.output.SysUserOutputDTO;
 import com.zjf.common.utils.JwtUtils;
 import com.zjf.common.utils.RedisUtils;
+import com.zjf.common.utils.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +40,11 @@ public class AuthController {
     private UserClient userClient;
 
     @PostMapping("/login")
-    public ResultDTO login(String username, String password){
-        ResultDTO resultVO = userClient.login(username, password);
-        ResultDTO resultVOr = new ResultDTO();
-        if(resultVO.getCode().equals(ResultDTO.OK_CODE)){
-            Object data = resultVO.getData();
+    public ResultVO login(String username, String password){
+        ResultDTO resultDTO = userClient.login(username, password);
+        ResultVO resultVO = new ResultVO();
+        if(resultDTO.getCode().equals(ResultDTO.OK_CODE)){
+            Object data = resultDTO.getData();
             SysUserOutputDTO sysUserOutputDTO = JSON.parseObject(JSON.toJSONString(data),SysUserOutputDTO.class);
             //生成token
             String token = jwtUtils.generateToken(sysUserOutputDTO.getId().toString());
@@ -52,13 +53,13 @@ public class AuthController {
             Map<String,Object> result = new HashMap<>(2);
             result.put("token", token);
             result.put("expire", jwtUtils.getExpire());
-            resultVOr.setData(result);
+            resultVO.setData(result);
         }else{
-            resultVOr.setCode(resultVO.getCode());
-            resultVOr.setMsg(resultVO.getMsg());
+            resultVO.setCode(resultDTO.getCode());
+            resultVO.setMsg(resultDTO.getMsg());
         }
 
-        return resultVOr;
+        return resultVO;
     }
 
     /**

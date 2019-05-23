@@ -4,7 +4,7 @@ import com.netflix.zuul.exception.ZuulException;
 import org.springframework.http.HttpStatus;
 
 /**
- * @Description: 自定义异常
+ * @Description: 自定义Zuul抛出的异常
  * @author harry.zhang
  */
 public class GatewayException extends ZuulException {
