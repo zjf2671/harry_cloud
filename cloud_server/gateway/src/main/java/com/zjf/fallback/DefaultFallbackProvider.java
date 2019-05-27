@@ -1,6 +1,8 @@
 package com.zjf.fallback;
 
+import com.alibaba.fastjson.JSON;
 import com.netflix.hystrix.exception.HystrixTimeoutException;
+import com.zjf.common.utils.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
 import org.springframework.http.HttpHeaders;
@@ -69,7 +71,8 @@ public class DefaultFallbackProvider implements FallbackProvider {
 
             @Override
             public InputStream getBody() throws IOException {
-                return new ByteArrayInputStream(("{\"code\":\""+status.value()+"\",\"msg\":\""+ route + SERVICE_DISABLE+"\"}").getBytes());
+                ResultVO resultVO = ResultVO.error(status.value(), route + SERVICE_DISABLE);
+                return new ByteArrayInputStream((JSON.toJSONString(resultVO)).getBytes());
             }
 
             @Override
