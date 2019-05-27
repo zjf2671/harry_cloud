@@ -38,7 +38,7 @@ public class ErrorHandler extends AbstractErrorController{
         Exception exception = (Exception)request.getAttribute("javax.servlet.error.exception");
         r.setCode(code != null ? Integer.parseInt(code):null);
         r.setMsg(message);
-        log.error("filter全局异常捕获", exception);
+        log.error("filter全局异常捕获 status:{}", code, exception);
         //用于解决自定义异常code码浏览器不识别问题
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         return r;
