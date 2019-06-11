@@ -35,6 +35,12 @@ management:
     web:
       exposure:
         include: "*"  # "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+  metrics:
+    tags:
+      application: ${spring.application.name}
 ribbon:
   ReadTimeout: 10000
   ConnectTimeout: 10000
