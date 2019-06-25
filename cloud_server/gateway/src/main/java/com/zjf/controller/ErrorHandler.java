@@ -1,6 +1,7 @@
 package com.zjf.controller;
 
-import com.zjf.common.user.ResultDTO;
+import com.netflix.zuul.exception.ZuulException;
+import com.zjf.common.utils.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
@@ -31,16 +32,22 @@ public class ErrorHandler extends AbstractErrorController{
      * @return
      */
     @RequestMapping()
-    public ResultDTO error(HttpServletRequest request, HttpServletResponse response) {
-        ResultDTO r = new ResultDTO();
-        String message = request.getAttribute("javax.servlet.error.message").toString();
-        String code = request.getAttribute("javax.servlet.error.status_code").toString();
-        Exception exception = (Exception)request.getAttribute("javax.servlet.error.exception");
-        r.setCode(code != null ? Integer.parseInt(code):null);
-        r.setMsg(message);
-        log.error("filter全局异常捕获 status:{}", code, exception);
+    public ResultVO error(HttpServletRequest request, HttpServletResponse response) {
+        ResultVO r = new ResultVO();
+        String message = request.getAttribute("javax.servlet.error.message")!=null ? request.getAttribute("javax.servlet.error.message").toString():null;
+        String code = request.getAttribute("javax.servlet.error.status_code")!=null ? request.getAttribute("javax.servlet.error.status_code").toString():null;
+        Throwable throwable = (Throwable)request.getAttribute("javax.servlet.error.exception");
+        if(throwable instanceof ZuulException){
+            ZuulException zuulException = (ZuulException)throwable;
+            r.setCode(code != null ? Integer.parseInt(code): zuulException.nStatusCode);
+            r.setMsg(message != null ? message: zuulException.getMessage());
+        }else {
+            r.setCode(code != null ? Integer.parseInt(code): -1);
+            r.setMsg(message != null ? message: throwable.getMessage());
+        }
+        log.error("filter全局异常捕获 status:{}", r.getCode(), throwable);
         //用于解决自定义异常code码浏览器不识别问题
-        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        response.setStatus(HttpStatus.OK.value());
         return r;
     }
 

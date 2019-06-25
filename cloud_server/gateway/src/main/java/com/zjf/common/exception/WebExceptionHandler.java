@@ -40,7 +40,7 @@ public class WebExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public ResultVO handleException(Exception e){
 		log.error(e.getMessage(), e);
-		return ResultVO.error();
+		return ResultVO.error("网关中心出现异常，请联系管理员");
 	}
 
 
