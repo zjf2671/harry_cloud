@@ -1,6 +1,3 @@
-# harry_cloud
-SpringCloud 学习项目
-
 # cloud_server
   --基础服务支撑
 # order
