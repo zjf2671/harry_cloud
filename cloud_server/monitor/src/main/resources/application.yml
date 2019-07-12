@@ -13,19 +13,16 @@ spring:
           starttls:
             enable: true
             required: true
-#邮件通知
   boot:
     admin:
       notify:
+        #邮件通知
         mail:
           # 是谁发送出去的
           from: abc@qq.com
           # 发送给谁
           to: abc@126.com
-#钉钉通知
-  boot:
-    admin:
-      notify:
+        #钉钉通知
         dingtalk:
           enabled: false
           webhook-token: https://oapi.dingtalk.com/robot/send?access_token=****
