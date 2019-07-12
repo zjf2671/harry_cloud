@@ -1,3 +1,5 @@
+server:
+  port: 8801
 app:
     # 是通过jwt认证的，可以进行修改【加密秘钥】
     jwt:

@@ -1,3 +1,5 @@
+server:
+  port: 8805
 # turbine ≈‰÷√
 turbine:
   appConfig: order,product #,gateway,user
