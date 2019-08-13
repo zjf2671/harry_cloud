@@ -58,7 +58,6 @@ ribbon:
 
 #开启swagger自动路由配置
 swagger:
-  enable: true
   butler:
     auto-generate-from-zuul-routes: true
 #logging:
