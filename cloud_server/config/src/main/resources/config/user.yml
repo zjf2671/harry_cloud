@@ -1,6 +1,4 @@
-server:
-  port: 8002
-#mybatis
+﻿#mybatis
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
   #实体扫描，多个package用逗号或者分号分隔

@@ -44,7 +44,9 @@ public class OrderServiceImpl implements OrderService {
             }
             List<ProductVO> productVOList = Lists.newArrayList();
             ResultDTO<List<ProductOuputDTO>> resultDTO = productClient.list(productIds);
-            BeanCommonUtils.copyListProperties(resultDTO.getData(), productVOList, ProductVO.class);
+            if(resultDTO.getCode()==200 && resultDTO.getData() != null){
+                BeanCommonUtils.copyListProperties(resultDTO.getData(), productVOList, ProductVO.class);
+            }
             orderVO.setProductVOList(productVOList);
             orderVOList.add(orderVO);
         }

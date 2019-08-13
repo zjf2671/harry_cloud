@@ -25,7 +25,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    @Value("${swagger2.enable}")
+    @Value("${swagger.enable}")
     private boolean swagger2Enable;
     /**
      *  定义分隔符

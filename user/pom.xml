@@ -32,7 +32,6 @@
 		<jwt.version>0.7.0</jwt.version>
 		<druid.version>1.1.9</druid.version>
 		<mysql.version>5.1.38</mysql.version>
-		<sqlserver.version>4.0</sqlserver.version>
 		<fastjson.version>1.2.47</fastjson.version>
 
 	</properties>
@@ -59,12 +58,6 @@
 				<version>${mysql.version}</version>
 			</dependency>
 
-			<!--sqljdbc4 工具类-->
-			<dependency>
-				<groupId>com.microsoft.sqlserver</groupId>
-				<artifactId>sqljdbc4</artifactId>
-				<version>${sqlserver.version}</version>
-			</dependency>
 
 			<dependency>
 				<groupId>org.apache.shiro</groupId>

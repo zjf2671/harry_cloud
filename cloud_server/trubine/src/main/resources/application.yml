@@ -1,10 +1,8 @@
-server:
-  port: 8805
-# turbine ÅäÖÃ
+# turbine é…ç½®
 turbine:
   appConfig: order,product #,gateway,user
   aggregator:
-    # turbine¾Û¼¯Êı¾İµÄÁ£¶È
+    # turbineèšé›†æ•°æ®çš„ç²’åº¦
     clusterConfig: default
   clusterNameExpression: new String("default")
   combineHostPort: true

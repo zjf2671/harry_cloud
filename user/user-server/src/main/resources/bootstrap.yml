@@ -1,6 +1,17 @@
+server:
+  port: 8002
+
 spring:
   application:
     name: user
+  cloud:
+    config:
+      fail-fast: true #是否启动快速失败功能，功能开启则优先判断config server是否正常
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: CONFIG
   profiles:
     active: dev
   # jackson时间格式化

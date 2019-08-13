@@ -1,16 +1,30 @@
+server:
+  port: 8803
+
 spring:
   application:
     name: config
+  profiles:
+    active: native
   cloud:
       config:
         server:
-          git:
-            uri: http://192.168.0.168:3000/harry/conf_repo.git
-            username: harry
-            password: ASqw1234
+#          git:
+#            uri: http://192.168.0.168:3000/harry/conf_repo.git
+#            username: harry
+#            password: ASqw1234
+          native:
+            search-locations: classpath:/config/
 eureka:
   instance:
     prefer-ip-address: true
   client:
     service-url:
       defaultZone: http://localhost:8800/eureka/
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

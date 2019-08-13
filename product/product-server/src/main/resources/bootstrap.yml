@@ -1,12 +1,19 @@
+server:
+  port: 8003
+
 spring:
   application:
     name: product
+  profiles:
+    active: dev
   cloud:
     config:
+      fail-fast: true #是否启动快速失败功能，功能开启则优先判断config server是否正常
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
       discovery:
         enabled: true
         service-id: CONFIG
-      profile: dev
 eureka:
   instance:
     prefer-ip-address: true

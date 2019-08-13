@@ -1,6 +1,17 @@
+server:
+  port: 8801
+
 spring:
   application:
     name: gateway
+  cloud:
+    config:
+      fail-fast: true #是否启动快速失败功能，功能开启则优先判断config server是否正常
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: CONFIG
   profiles:
     active: dev
   jackson:
@@ -47,9 +58,9 @@ ribbon:
 
 #开启swagger自动路由配置
 swagger:
+  enable: true
   butler:
     auto-generate-from-zuul-routes: true
-
 #logging:
 #  level:
 #    root: INFO

@@ -1,5 +1,3 @@
-server:
-  port: 8802
 spring:
   mail:
     #配置邮件服务器
