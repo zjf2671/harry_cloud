@@ -6,11 +6,15 @@ spring:
     name: eureka
 eureka:
   instance:
-    hostname: localhost
+    hostname: 127.0.0.1
+    prefer-ip-address: true
   client:
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    # false表示不向注册中心注册自己
     register-with-eureka: false
+    # false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
     fetch-registry: false
+  #	false 关闭注册中心的保护机制
   server:
     enable-self-preservation: false
