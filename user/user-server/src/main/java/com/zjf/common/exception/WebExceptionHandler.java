@@ -1,6 +1,6 @@
 package com.zjf.common.exception;
 
-import com.zjf.common.user.ResultDTO;
+import com.zjf.common.utils.ResultVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;
@@ -20,20 +20,20 @@ public class WebExceptionHandler {
 	 * 处理自定义异常
 	 */
 	@ExceptionHandler(BusinessException.class)
-	public ResultDTO handleBusinessException(BusinessException e){
+	public ResultVO handleBusinessException(BusinessException e){
 		logger.error(e.getMessage(), e);
-		return ResultDTO.error(e.getCode(),e.getMsg());
+		return ResultVO.error(e.getCode(),e.getMsg());
 	}
 
 	@ExceptionHandler(DuplicateKeyException.class)
-	public ResultDTO handleDuplicateKeyException(DuplicateKeyException e){
+	public ResultVO handleDuplicateKeyException(DuplicateKeyException e){
 		logger.error(e.getMessage(), e);
-		return ResultDTO.error("数据库中已存在该记录");
+		return ResultVO.error("数据库中已存在该记录");
 	}
 
 	@ExceptionHandler(Exception.class)
-	public ResultDTO handleException(Exception e){
+	public ResultVO handleException(Exception e){
 		logger.error(e.getMessage(), e);
-		return ResultDTO.error();
+		return ResultVO.error();
 	}
 }
