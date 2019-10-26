@@ -22,6 +22,7 @@
 
 	<modules>
 		<module>cloud_server</module>
+		<module>harry-common</module>
 		<module>order</module>
 		<module>product</module>
 		<module>user</module>
@@ -66,5 +67,12 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+	</dependencies>
 
 </project>
