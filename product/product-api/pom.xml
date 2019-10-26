@@ -7,9 +7,7 @@
 		<artifactId>product</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.zjf</groupId>
 	<artifactId>product-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>product-api</name>
 	<description>Demo project for Spring Boot</description>
 

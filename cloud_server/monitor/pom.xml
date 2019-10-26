@@ -7,9 +7,7 @@
 		<artifactId>cloud_server</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.zy</groupId>
 	<artifactId>monitor</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>monitor</name>
 	<description>Demo project for Spring Boot</description>
 

@@ -14,7 +14,7 @@
 
                   |-java
 
-                      |-com.zy.api     -------->用于创建暴露给其它系统调用api接口主目录
+                      |-com.zjf.api     -------->用于创建暴露给其它系统调用api接口主目录
 
                           |-user     ---------->api分支目录
 
@@ -26,7 +26,7 @@
 
                    |-java
 
-                        |-com.zy.common    ---------->common主目录
+                        |-com.zjf.common    ---------->common主目录
 
                              |-input    ------>入参DTO目录
 
@@ -40,7 +40,7 @@
 
                    |-java
 
-                       |-com.zy    ---------->server主目录
+                       |-com.zjf    ---------->server主目录
 
                             |-common   -------->共用主目录
 

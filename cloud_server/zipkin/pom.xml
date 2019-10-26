@@ -7,9 +7,7 @@
 		<artifactId>cloud_server</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.zjf</groupId>
 	<artifactId>zipkin</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>zipkin</name>
 	<description>Demo project for Spring Boot</description>
 
