@@ -1,5 +1,7 @@
 # cloud_server
   --基础服务支撑
+# harry-common
+  --共用模块
 # order
   --具体订单中心业务服务
 # product
