@@ -1,0 +1,49 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: order
+  profiles:
+    active: dev
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: CONFIG
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8800/eureka/
+
+
+# 在feign中开启hystrix功能，默认情况下feign不开启hystrix功能
+feign:
+  hystrix:
+    enabled: true
+
+
+hystrix:
+  command:
+    default: #feign中使用hystrix的commandKey的构造格式(类、方法名、参数)对单个方法降级，比如本文的实例ProductClient#list(List)，设置所有实例的默认值用default
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 50 #设置超时时间 默认1000
+      circuitBreaker:
+        enabled: true #是否开启断路器功能 默认true
+        requestVolumeThreshold: 10 #设置滚动窗口中将使断路器跳闸的最小请求数量 默认20
+        sleepWindowInMilliseconds: 10000 #断路器跳闸后，在此值的时间的内，hystrix会拒绝新的请求，只有过了这个时间断路器才会打开闸门 默认5000
+        errorThresholdPercentage: 60 #设置失败百分比的阈值。如果失败比率超过这个值，则断路器跳闸并且进入fallback逻辑 默认50
+
+#配置正常打开hystrix dashboard页面
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream # 或者"*"
