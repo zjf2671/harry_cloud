@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.zjf</groupId>
 	<artifactId>harry_cloud</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>harry_cloud</name>
 	<description>Demo project for Spring Boot</description>
