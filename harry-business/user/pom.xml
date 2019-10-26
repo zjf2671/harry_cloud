@@ -20,9 +20,6 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<user-common.version>0.0.1-SNAPSHOT</user-common.version>
-		<user-client.version>0.0.1-SNAPSHOT</user-client.version>
-		<product-client.version>0.0.1-SNAPSHOT</product-client.version>
 		<lombok.version>1.16.20</lombok.version>
 		<guava.version>27.0.1-jre</guava.version>
 		<mybatis-plus-boot-starter.version>3.0.6</mybatis-plus-boot-starter.version>
@@ -40,7 +37,7 @@
 			<dependency>
 				<groupId>com.zjf</groupId>
 				<artifactId>user-common</artifactId>
-				<version>${user-common.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<!--mybatisPlus 三方包导入-->

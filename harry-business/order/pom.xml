@@ -13,11 +13,6 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>1.8</java.version>
-		<order-common.version>0.0.1-SNAPSHOT</order-common.version>
-		<order-client.version>0.0.1-SNAPSHOT</order-client.version>
-		<product-api.version>0.0.1-SNAPSHOT</product-api.version>
-		<lombok.version>1.16.20</lombok.version>
 		<guava.version>27.0.1-jre</guava.version>
 	</properties>
 
@@ -33,13 +28,13 @@
 			<dependency>
 				<groupId>com.zjf</groupId>
 				<artifactId>order-common</artifactId>
-				<version>${order-common.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.zjf</groupId>
 				<artifactId>product-api</artifactId>
-				<version>${product-api.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 
 
