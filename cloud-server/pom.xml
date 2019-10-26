@@ -7,9 +7,9 @@
 		<artifactId>harry_cloud</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>cloud_server</artifactId>
+	<artifactId>cloud-server</artifactId>
 	<packaging>pom</packaging>
-	<name>cloud_server</name>
+	<name>cloud-server</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

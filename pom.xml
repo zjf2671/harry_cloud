@@ -21,7 +21,7 @@
 	</properties>
 
 	<modules>
-		<module>cloud_server</module>
+		<module>cloud-server</module>
 		<module>harry-common</module>
 		<module>harry-business</module>
 	</modules>

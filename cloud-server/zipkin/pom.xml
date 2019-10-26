@@ -4,47 +4,53 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.zjf</groupId>
-		<artifactId>cloud_server</artifactId>
+		<artifactId>cloud-server</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>monitor</artifactId>
-	<name>monitor</name>
+	<artifactId>zipkin</artifactId>
+	<name>zipkin</name>
 	<description>Demo project for Spring Boot</description>
 
+	<properties>
+		<java.version>1.8</java.version>
+		<zipkin.version>2.11.6</zipkin.version>
+	</properties>
+
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-starter-server</artifactId>
-		</dependency>
+
+		<!-- spring cloud eureka client -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
+		<!-- 引入zipkin-server -->
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-security</artifactId>
+			<groupId>io.zipkin.java</groupId>
+			<artifactId>zipkin-server</artifactId>
+			<version>${zipkin.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-log4j2</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- 引入zipkin-server 图形化界面 -->
+		<dependency>
+			<groupId>io.zipkin.java</groupId>
+			<artifactId>zipkin-autoconfigure-ui</artifactId>
+			<version>${zipkin.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>
-		<!--请自行去钉钉官网上下载放到自己的私服中-->
-		<dependency>
-			<groupId>com.dingtalk</groupId>
-			<artifactId>dingtalk-api</artifactId>
-			<version>taobao-sdk-java-auto_1479188381469-20190626</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<groupId>io.zipkin.zipkin2</groupId>
+			<artifactId>zipkin-storage-elasticsearch</artifactId>
+			<version>${zipkin.version}</version>
 		</dependency>
 
 		<dependency>
