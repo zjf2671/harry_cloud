@@ -1,4 +1,4 @@
-![](<doc/image/config-image.jpg>)
+![image](<https://github.com/zjf2671/harry_cloud/blob/master/doc/image/config-image.jpg>)
 
 # 使用说明
 
