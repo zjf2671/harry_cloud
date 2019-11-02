@@ -2,7 +2,7 @@
 
 # 使用说明
 
-```
+
 目前拉取有两种方式，根据系统的情况进行选择，手动拉取和定时自动拉取
  a、手动拉去方式：http://serverA:8801/actuator/refresh 
 
@@ -16,5 +16,5 @@
    <artifactId>aotoconfig-refresh-spring-boot-starter</artifactId>
    <version>1.0.0-SNAPSHOT</version>
 </dependency>
-```
+
 
