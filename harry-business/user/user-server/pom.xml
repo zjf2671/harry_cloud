@@ -146,7 +146,7 @@
 				</configuration>
 			</plugin>
 
-			<!--引用dokcer-->
+			<!--引用docker-->
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
