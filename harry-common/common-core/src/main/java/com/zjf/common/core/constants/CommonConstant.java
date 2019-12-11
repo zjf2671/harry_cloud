@@ -25,7 +25,7 @@ public interface CommonConstant {
     /**
      * 超级管理员用户名
      */
-    String ADMIN_USER_NAME = "ZYadmin.";
+    String ADMIN_USER_NAME = "ZjfAdmin";
 
     /**
      * 公共日期格式
@@ -44,7 +44,7 @@ public interface CommonConstant {
     /**
      * 负载均衡策略-版本号 信息头
      */
-    String ZY_VERSION = "zy-version";
+    String ZJF_VERSION = "Zjf-version";
     /**
      * 注册中心元数据 版本号
      */

@@ -1,4 +1,14 @@
-# common-core   
-    核心模块
-# aotoconfig-refresh-spring-boot-starter
-    自动拉新starter
+**相关说明**
+
+**common-core**
+
+    核心包
+**aotoconfig-refresh-spring-boot-starter**
+
+    配置中心自动刷新组件
+**redis-spring-boot-starter**
+
+    redis组件
+**ribbon-spring-boot-starter**
+
+    应用隔离组件

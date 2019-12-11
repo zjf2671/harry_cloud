@@ -26,7 +26,7 @@ public class FeignHeadersInterceptor implements RequestInterceptor {
     @PostConstruct
     public void initialize() {
         requestHeaders.add(Constant.TOKEN);
-        requestHeaders.add(CommonConstant.ZY_VERSION);
+        requestHeaders.add(CommonConstant.ZJF_VERSION);
     }
 
     @Override

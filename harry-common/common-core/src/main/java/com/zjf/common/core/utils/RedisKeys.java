@@ -10,7 +10,7 @@ public class RedisKeys {
 
     private RedisKeys(){}
 
-    private final static String PREFIX = "hiip:";
+    private final static String PREFIX = "harry:";
 
     /**
      * redis 系统配置key

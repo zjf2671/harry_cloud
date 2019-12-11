@@ -15,6 +15,8 @@
 	<modules>
 		<module>common-core</module>
 		<module>aotoconfig-refresh-spring-boot-starter</module>
+		<module>redis-spring-boot-starter</module>
+		<module>ribbon-spring-boot-starter</module>
 	</modules>
 
 	<properties>
@@ -33,7 +35,7 @@
 		<dependencies>
 
 			<dependency>
-				<groupId>com.zy.common.core</groupId>
+				<groupId>com.zjf</groupId>
 				<artifactId>common-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
