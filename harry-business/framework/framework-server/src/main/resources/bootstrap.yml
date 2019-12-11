@@ -1,0 +1,37 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: gen
+  profiles:
+    active: dev
+  # jackson时间格式化
+  jackson:
+      time-zone: GMT+8
+      date-format: yyyy-MM-dd HH:mm:ss
+  zipkin:
+      # zipkin服务地址
+      base-url: http://admin:admin@zjf-zipkin-${spring.profiles.active}:8803
+      sender:
+          type: web
+  sleuth:
+      # 全部采样，（采样请求的百分比，默认为 0.1，即 10%）
+      sampler:
+          rate: 1
+eureka:
+  instance:
+    prefer-ip-address: true
+#    metadata-map:
+#      version: harry
+  client:
+    service-url:
+      defaultZone: http://admin:admin@zjf-eureka-${spring.profiles.active}:8800/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

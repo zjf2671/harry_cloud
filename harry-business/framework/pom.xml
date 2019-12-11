@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.zjf</groupId>
+	<artifactId>framework</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>zjf-framework</name>
+	<description>Demo project for Spring Boot</description>
+
+	<modules>
+		<module>framework-api</module>
+		<module>framework-common</module>
+		<module>framework-server</module>
+	</modules>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<guava.version>27.0.1-jre</guava.version>
+		<spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+		<spring-boot-maven-plugin.version>2.1.4.RELEASE</spring-boot-maven-plugin.version>
+		<mybatis-plus-boot-starter.version>3.0.6</mybatis-plus-boot-starter.version>
+		<shiro.version>1.3.2</shiro.version>
+		<jwt.version>0.7.0</jwt.version>
+		<druid.version>1.1.9</druid.version>
+		<mysql.version>5.1.38</mysql.version>
+		<sqlserver.version>4.0</sqlserver.version>
+		<oracle-driver.version>12.1.0.2</oracle-driver.version>
+		<fastjson.version>1.2.47</fastjson.version>
+		<hutool.version>4.6.8</hutool.version>
+		<swagger-butler-core-version>2.0.0</swagger-butler-core-version>
+		<!--自定义ribbon隔离-->
+		<ribbon-spring-boot-starter.version>1.0.0-SNAPSHOT</ribbon-spring-boot-starter.version>
+		<!--自定义自动拉取配置中心配置-->
+		<aotoconfig-refresh-spring-boot-starter.version>1.0.0-SNAPSHOT</aotoconfig-refresh-spring-boot-starter.version>
+		<!--自定义redis starter-->
+		<redis-spring-boot-starter.version>1.0.0-SNAPSHOT</redis-spring-boot-starter.version>
+		<!--用户服务版本-->
+		<user-api.version>1.0.0-SNAPSHOT</user-api.version>
+		<!--核心包版本-->
+		<common-core.version>1.0.0-SNAPSHOT</common-core.version>
+
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>com.zjf</groupId>
+				<artifactId>framework-common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zjf</groupId>
+				<artifactId>framework-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zjf</groupId>
+				<artifactId>user-api</artifactId>
+				<version>${user-api.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zjf</groupId>
+				<artifactId>common-core</artifactId>
+				<version>${common-core.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zjf.common.ribbon</groupId>
+				<artifactId>ribbon-spring-boot-starter</artifactId>
+				<version>${ribbon-spring-boot-starter.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zjf.common.aotoconfig</groupId>
+				<artifactId>aotoconfig-refresh-spring-boot-starter</artifactId>
+				<version>${aotoconfig-refresh-spring-boot-starter.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zjf.common.redis</groupId>
+				<artifactId>redis-spring-boot-starter</artifactId>
+				<version>${redis-spring-boot-starter.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!--mybatisPlus 三方包导入-->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus-boot-starter.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.didispace</groupId>
+				<artifactId>swagger-butler-core</artifactId>
+				<version>${swagger-butler-core-version}</version>
+			</dependency>
+			<!--sqljdbc4 工具类-->
+			<dependency>
+				<groupId>com.microsoft.sqlserver</groupId>
+				<artifactId>sqljdbc4</artifactId>
+				<version>${sqlserver.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.oracle</groupId>
+				<artifactId>oracle-driver-ojdbc_g-12.1.0.2</artifactId>
+				<version>${oracle-driver.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+
+			<!--jjwt 一种jwt的实现-->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>${jwt.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+
+			<!-- hutool java工具类库  -->
+			<dependency>
+				<groupId>cn.hutool</groupId>
+				<artifactId>hutool-all</artifactId>
+				<version>${hutool.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Nexus Release Repository</name>
+			<url>http://192.168.0.168:8081/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://192.168.0.168:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring-boot-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+</project>

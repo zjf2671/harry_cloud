@@ -16,6 +16,7 @@
 		<module>order</module>
 		<module>product</module>
 		<module>user</module>
+		<module>framework</module>
 	</modules>
 
 	<properties>

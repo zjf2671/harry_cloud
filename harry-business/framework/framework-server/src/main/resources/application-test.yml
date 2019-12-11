@@ -1,0 +1,35 @@
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        druid:
+            url: jdbc:sqlserver://zjf-sqlserver-test:1433;DatabaseName=gen
+            username: DBuser
+            password: qwer#@!
+            initial-size: 10
+            min-idle: 10
+            max-active: 100
+            max-wait: 60000
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 30000
+            validation-query: select 'x'
+            test-on-borrow: false
+            test-on-return: false
+            test-while-idle: true
+            max-pool-prepared-statement-per-connection-size: 20
+            filters: stat,wall
+            connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=1000
+    redis:
+        database: 0
+        host: zjf-redis-test
+        port: 6379
+        password:       # 密码（默认为空）
+        timeout: 6000ms  # 连接超时时长（毫秒）
+        lettuce:
+            pool:
+                max-active: 1000  # 连接池最大连接数（使用负值表示没有限制）
+                max-wait: -1ms      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+                max-idle: 10      # 连接池中的最大空闲连接
+                min-idle: 5       # 连接池中的最小空闲连接
+logging:
+  level-log: debug
