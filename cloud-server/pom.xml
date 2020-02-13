@@ -33,7 +33,7 @@
 		<module>gateway</module>
 		<module>monitor</module>
 		<module>zipkin</module>
-		<module>trubine</module>
+		<module>turbine</module>
 	</modules>
 
 	<dependencyManagement>
