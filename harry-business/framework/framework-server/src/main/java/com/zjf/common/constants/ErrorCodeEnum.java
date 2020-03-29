@@ -1,29 +1,34 @@
 package com.zjf.common.constants;
 
+import com.zjf.common.core.exception.ErrorType;
+
 /**
- * 错误码(按系统索要码段)，系统之前不允许code一样的情况
+ * 错误码(按系统索要码段)，系统之间不允许code一样的情况
  *
  * @author Harry
  */
 
-public enum ErrorCodeEnum {
+public enum ErrorCodeEnum implements ErrorType {
 
-    USER_PASSWORD_ERROR(10001, "账号或密码不正确");
+    /**
+     * 313131 demo
+     */
+    TEST(313131, "错误码(按系统索要码段)，系统之间不允许code一样的情况");
     private int code;
-    private String value;
+    private String msg;
 
-    ErrorCodeEnum(int code, String value) {
+    ErrorCodeEnum(int code, String msg) {
         this.code = code;
-        this.value = value;
+        this.msg = msg;
     }
 
+    @Override
     public int getCode() {
         return code;
     }
 
-    public String getValue() {
-        return value;
+    @Override
+    public String getMsg() {
+        return msg;
     }
-
-
 }
