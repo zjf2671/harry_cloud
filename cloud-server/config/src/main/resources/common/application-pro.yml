@@ -1,0 +1,6 @@
+logging:
+  level-log: info
+
+ribbon:
+  ReadTimeout: 15000
+  ConnectTimeout: 15000

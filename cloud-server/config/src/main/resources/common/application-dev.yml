@@ -1,0 +1,12 @@
+logging:
+  level-log: debug
+
+ribbon:
+  ReadTimeout: 15000
+  ConnectTimeout: 15000
+
+##### 负载均衡隔离(version隔离，只适用于开发环境)
+zy:
+  ribbon:
+    isolation:
+      enabled: true

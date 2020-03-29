@@ -1,0 +1,6 @@
+logging:
+  level-log: debug
+
+ribbon:
+  ReadTimeout: 15000
+  ConnectTimeout: 15000
