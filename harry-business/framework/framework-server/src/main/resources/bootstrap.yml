@@ -19,6 +19,15 @@ spring:
       # 全部采样，（采样请求的百分比，默认为 0.1，即 10%）
       sampler:
           rate: 1
+#  cloud:
+#    config:
+#      fail-fast: true #是否启动快速失败功能，功能开启则优先判断config server是否正常
+#      name: ${spring.application.name}
+#      profile: ${spring.profiles.active}
+#      enabled: true
+#      uri:
+#        - http://zy-config-${spring.profiles.active}:8804
+##      refreshInterval: 300 #去掉此参数不会定时拉配置服务的数据 单位秒
 eureka:
   instance:
     prefer-ip-address: true
