@@ -18,6 +18,8 @@
 		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
 		<spring-boot-maven-plugin.version>2.1.4.RELEASE</spring-boot-maven-plugin.version>
 		<swagger-butler-core-version>2.0.0</swagger-butler-core-version>
+		<docker.host>http://192.168.99.100:2375</docker.host>
+		<docker.maven.plugin.version>1.1.0</docker.maven.plugin.version>
 	</properties>
 
 	<modules>
@@ -61,6 +63,33 @@
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 					<version>${spring-boot-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>com.spotify</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>${docker.maven.plugin.version}</version>
+					<executions>
+						<execution>
+							<id>build-image</id>
+							<phase>package</phase>
+							<goals>
+								<goal>build</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<imageName>harry/${project.artifactId}:${project.version}</imageName>
+						<!--<dockerHost>${docker.host}</dockerHost>-->
+						<baseImage>java:8</baseImage>
+						<entryPoint>["java", "-jar","/${project.build.finalName}.jar"]</entryPoint>
+						<resources>
+							<resource>
+								<targetPath>/</targetPath>
+								<directory>${project.build.directory}</directory>
+								<include>${project.build.finalName}.jar</include>
+							</resource>
+						</resources>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
