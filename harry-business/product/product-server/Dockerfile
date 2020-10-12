@@ -2,14 +2,14 @@ FROM java:8
 
 MAINTAINER harry.zhang
 
-RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ENV TZ=Asia/Shanghai JAVA_OPTS="-Xms128m -Xmx256m -Djava.security.egd=file:/dev/./urandom"
 
 RUN mkdir -p /product-server
 
-WORKDIR /product-server
+WORKDIR /eureka
 
-EXPOSE 8001
+EXPOSE 8800
 
-ADD ./target/product-server.jar ./
+COPY target/eureka.jar ./
 
-CMD sleep 30;java -Xms128m -Xmx256m -Djava.security.egd=file:/dev/./urandom -jar product-server.jar
+CMD sleep 30;java $JAVA_OPTS -jar product-server.jar
