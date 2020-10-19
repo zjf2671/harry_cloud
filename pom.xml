@@ -18,8 +18,13 @@
 		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
 		<spring-boot-maven-plugin.version>2.1.4.RELEASE</spring-boot-maven-plugin.version>
 		<swagger-butler-core-version>2.0.0</swagger-butler-core-version>
-		<docker.host>http://192.168.99.100:2375</docker.host>
-		<docker.maven.plugin.version>1.1.0</docker.maven.plugin.version>
+
+		<docker.plugin.version>0.32.0</docker.plugin.version>
+		<docker.host>https://192.168.99.100:2376</docker.host>
+		<docker.registry>registry.cn-shanghai.aliyuncs.com</docker.registry>
+		<docker.namespace>harrycloud</docker.namespace>
+		<docker.username>username</docker.username>
+		<docker.password>password</docker.password>
 	</properties>
 
 	<modules>
@@ -64,32 +69,36 @@
 					<artifactId>spring-boot-maven-plugin</artifactId>
 					<version>${spring-boot-maven-plugin.version}</version>
 				</plugin>
+				<!--打包并推送到私仓命令 mvn clean package docker:build docker:push-->
 				<plugin>
-					<groupId>com.spotify</groupId>
+					<groupId>io.fabric8</groupId>
 					<artifactId>docker-maven-plugin</artifactId>
-					<version>${docker.maven.plugin.version}</version>
-					<executions>
-						<execution>
-							<id>build-image</id>
-							<phase>package</phase>
-							<goals>
-								<goal>build</goal>
-							</goals>
-						</execution>
-					</executions>
+					<version>${docker.plugin.version}</version>
 					<configuration>
-						<imageName>harry/${project.artifactId}:${project.version}</imageName>
-						<!--<dockerHost>${docker.host}</dockerHost>-->
-<!--						<baseImage>java:8</baseImage>-->
-<!--						<entryPoint>["java", "-jar","/${project.build.finalName}.jar"]</entryPoint>-->
-						<dockerDirectory>${project.basedir}</dockerDirectory>
-						<resources>
-							<resource>
-								<targetPath>/</targetPath>
-								<directory>${project.build.directory}</directory>
-								<include>${project.build.finalName}.jar</include>
-							</resource>
-						</resources>
+						<!--这一部分是为了实现对远程docker容器的控制-->
+						<!-- Docker Remote Api-->
+						<!--也可以是tcp://IP:2376 这种形式-->
+						<dockerHost>${docker.host}</dockerHost>
+						<!-- docker远程访问所需证书地址,如果docker远程主机没有启用TLS验证则不需要配证书-->
+						<certPath>C:\Users\Harry\.docker\machine\machines\default</certPath>
+						<!-- Docker 镜像私服-->
+						<registry>${docker.registry}</registry>
+						<!-- 认证信息-->
+						<authConfig>
+							<push>
+								<username>${docker.username}</username>
+								<password>${docker.password}</password>
+							</push>
+						</authConfig>
+						<images>
+							<image>
+								<!-- 镜像名称： registry.cn-shanghai.aliyuncs.com/harrycloud/product-server:1.0.0-SNAPSHOT-->
+								<name>${docker.registry}/${docker.namespace}/${project.name}:${project.version}</name>
+								<build>
+									<dockerFile>${project.basedir}/Dockerfile</dockerFile>
+								</build>
+							</image>
+						</images>
 					</configuration>
 				</plugin>
 			</plugins>
