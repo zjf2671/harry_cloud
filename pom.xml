@@ -25,6 +25,7 @@
 		<docker.namespace>harrycloud</docker.namespace>
 		<docker.username>username</docker.username>
 		<docker.password>password</docker.password>
+		<images.version>${project.version}</images.version>
 	</properties>
 
 	<modules>
@@ -93,7 +94,7 @@
 						<images>
 							<image>
 								<!-- 镜像名称： registry.cn-shanghai.aliyuncs.com/harrycloud/product-server:1.0.0-SNAPSHOT-->
-								<name>${docker.registry}/${docker.namespace}/${project.name}:${project.version}</name>
+								<name>${docker.registry}/${docker.namespace}/${project.name}:${images.version}</name>
 								<build>
 									<dockerFile>${project.basedir}/Dockerfile</dockerFile>
 								</build>
