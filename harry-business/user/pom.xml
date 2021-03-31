@@ -21,7 +21,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<lombok.version>1.16.20</lombok.version>
-		<guava.version>27.0.1-jre</guava.version>
+		<guava.version>29.0-jre</guava.version>
 		<mybatis-plus-boot-starter.version>3.0.6</mybatis-plus-boot-starter.version>
 		<shiro.version>1.3.2</shiro.version>
 		<jwt.version>0.7.0</jwt.version>
