@@ -13,7 +13,7 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<guava.version>27.0.1-jre</guava.version>
+		<guava.version>29.0-jre</guava.version>
 	</properties>
 
 	<modules>
