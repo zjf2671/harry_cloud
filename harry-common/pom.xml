@@ -17,7 +17,8 @@
 		<module>aotoconfig-refresh-spring-boot-starter</module>
 		<module>redis-spring-boot-starter</module>
 		<module>ribbon-spring-boot-starter</module>
-	</modules>
+        <module>hystrix-thread-spring-boot-stater</module>
+    </modules>
 
 	<properties>
 		<java.version>1.8</java.version>

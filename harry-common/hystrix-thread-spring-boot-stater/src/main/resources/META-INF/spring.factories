@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zjf.common.hystrix.config.HystrixAutoConfiguration,\
+  com.zjf.common.hystrix.config.InterceptorConfig,\
+  com.zjf.common.hystrix.fegin.FeignConfigTest,\
+  com.zjf.common.hystrix.fegin.FeignConfigTestW

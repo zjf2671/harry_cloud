@@ -12,3 +12,7 @@
 **ribbon-spring-boot-starter**
 
     应用隔离组件
+    
+**hystrix-thread-spring-boot-starter**
+
+    解决Fegin 启用hystrix 默认thread隔离级别父子线程传递隔离组件
