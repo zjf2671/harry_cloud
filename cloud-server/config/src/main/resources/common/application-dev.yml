@@ -6,7 +6,7 @@ ribbon:
   ConnectTimeout: 15000
 
 ##### 负载均衡隔离(version隔离，只适用于开发环境)
-zy:
+zjf:
   ribbon:
     isolation:
       enabled: true

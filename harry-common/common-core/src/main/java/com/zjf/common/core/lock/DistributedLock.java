@@ -1,5 +1,8 @@
 package com.zjf.common.core.lock;
 
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
+
 /**
  * 分布式锁顶级接口
  * 例如：
@@ -60,6 +63,30 @@ public interface DistributedLock {
      * @return 成功/失败
      */
     boolean lock(String key, long expire);
+
+    /**
+     * 获取锁
+     *
+     * @param key    key
+     * @param expire 获取锁超时时间
+     * @param timeUnit 时间单位
+     * @param success 锁成功执行的逻辑
+     * @param fail 锁失败执行的逻辑
+     * @return 成功/失败
+     */
+    <T> T lock(String key, long expire, TimeUnit timeUnit, Supplier<T> success, Supplier<T> fail);
+
+    /**
+     * 获取锁
+     *
+     * @param key    key
+     * @param expire 获取锁超时时间
+     * @param timeUnit 时间单位
+     * @param success 锁成功执行的逻辑
+     * @param fail 锁失败执行的逻辑
+     * @return 成功/失败
+     */
+    void lock(String key, long expire, TimeUnit timeUnit,  Runnable success, Runnable fail);
 
     /**
      * 获取锁

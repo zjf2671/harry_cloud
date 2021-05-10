@@ -17,6 +17,7 @@
 		<module>aotoconfig-refresh-spring-boot-starter</module>
 		<module>redis-spring-boot-starter</module>
 		<module>ribbon-spring-boot-starter</module>
+        <module>idempotent-spring-boot-starter</module>
         <module>hystrix-thread-spring-boot-stater</module>
     </modules>
 

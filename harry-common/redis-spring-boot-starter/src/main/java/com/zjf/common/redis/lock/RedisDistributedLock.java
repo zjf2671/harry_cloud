@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 /**
  * redis分布式锁实现
@@ -43,6 +44,63 @@ public class RedisDistributedLock extends AbstractDistributedLock {
     public RedisDistributedLock(RedisTemplate<String, Object> redisTemplate) {
         super();
         this.redisTemplate = redisTemplate;
+    }
+
+    /**
+     * 获取锁
+     *
+     * @param key     key
+     * @param expire  获取锁超时时间
+     * @param success 锁成功执行的逻辑
+     * @param fail    锁失败执行的逻辑
+     * @param timeUnit 存储时间单位
+     * @return
+     */
+    @Override
+    public <T> T lock(String key, long expire, TimeUnit timeUnit, Supplier<T> success, Supplier<T> fail) {
+        boolean result = setRedis(key, expire, timeUnit);
+        if(result){
+            return success.get();
+        }else{
+            return fail.get();
+        }
+    }
+
+    /**
+     * 获取锁
+     *
+     * @param key     key
+     * @param expire  获取锁超时时间
+     * @param success 锁成功执行的逻辑
+     * @param fail    锁失败执行的逻辑
+     * @param timeUnit 存储时间单位
+     * @return
+     */
+    @Override
+    public void lock(String key, long expire, TimeUnit timeUnit, Runnable success, Runnable fail) {
+        boolean result = setRedis(key, expire, timeUnit);
+        if(result){
+            success.run();
+        }else{
+            fail.run();
+        }
+    }
+
+    private boolean setRedis(final String key, final long expire, final TimeUnit timeUnit) {
+        try {
+            boolean status = redisTemplate.execute((RedisCallback<Boolean>) connection -> {
+                String uuid = UUID.randomUUID().toString();
+                lockFlag.set(uuid);
+                byte[] keyByte = redisTemplate.getStringSerializer().serialize(key);
+                byte[] uuidByte = redisTemplate.getStringSerializer().serialize(uuid);
+                boolean result = connection.set(keyByte, uuidByte, Expiration.from(expire, timeUnit), RedisStringCommands.SetOption.ifAbsent());
+                return result;
+            });
+            return status;
+        } catch (Exception e) {
+            log.error("set redisDistributeLock occured an exception", e);
+        }
+        return false;
     }
 
     @Override

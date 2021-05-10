@@ -26,7 +26,7 @@ spring:
 #      profile: ${spring.profiles.active}
 #      enabled: true
 #      uri:
-#        - http://zy-config-${spring.profiles.active}:8804
+#        - http://zjf-config-${spring.profiles.active}:8804
 ##      refreshInterval: 300 #去掉此参数不会定时拉配置服务的数据 单位秒
 eureka:
   instance:

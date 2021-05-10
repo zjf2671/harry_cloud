@@ -1,5 +1,5 @@
 swagger2:
   enable: true
-zy:
+zjf:
   redis:
     lockContextKey: ${spring.application.name} #定义redis锁key上下文

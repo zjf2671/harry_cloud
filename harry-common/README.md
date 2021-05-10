@@ -12,6 +12,10 @@
 **ribbon-spring-boot-starter**
 
     应用隔离组件
+
+**idempotent-spring-boot-starter**
+
+    幂等及防重组件
     
 **hystrix-thread-spring-boot-starter**
 

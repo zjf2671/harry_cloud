@@ -1,0 +1,4 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.zjf.common.idempotent.IdempotentAutoConfiguration,\
+com.zjf.common.idempotent.WebAutoConfiguration
