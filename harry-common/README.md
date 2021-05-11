@@ -2,7 +2,7 @@
 
 **common-core**
 
-    核心包
+    核心包组件
 **aotoconfig-refresh-spring-boot-starter**
 
     配置中心自动刷新组件
