@@ -19,4 +19,4 @@
     
 **hystrix-thread-spring-boot-starter**
 
-    解决Fegin 启用hystrix 默认thread隔离级别父子线程传递隔离组件
+    解决Fegin 启用hystrix 默认thread隔离级别父子及线程程值传递隔离组件
